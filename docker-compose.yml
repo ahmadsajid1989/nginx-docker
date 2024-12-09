@@ -5,7 +5,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro  # Main NGINX configuration
       - ./nginx/conf.d:/etc/nginx/conf.d:ro          # Include configuration files
-      - ./nginx/ip_lists:/etc/nginx/ip_lists:ro          # Include configuration files
+      - ./nginx/ip_lists:/etc/nginx/ip_lists:rw          # Include configuration files
     ports:
       - "80:80"
     networks:
