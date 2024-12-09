@@ -1,0 +1,17 @@
+services:
+  nginx:
+    image: traffic_router:1.0
+    container_name: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro  # Main NGINX configuration
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro          # Include configuration files
+      - ./nginx/ip_lists:/etc/nginx/ip_lists:ro      # IP lists directory
+      - ./nginx/mmdb:/etc/nginx/mmdb:ro            # GeoIP data
+    ports:
+      - "80:80"
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    driver: bridge
